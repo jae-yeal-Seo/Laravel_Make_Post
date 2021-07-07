@@ -1,0 +1,29 @@
+* // protected $table = 'my_posts'; --> 왜 쓴다고?
+
+* php artisan tinker
+
+*>>> $post->title = 'Post 2';
+=> "Post 2"
+>>> $post ->content = 'This is Post 2';
+=> "This is Post 2"
+>>>$post->save()
+-->참조값이 있어야 됨. 
+
+*batch가 rollback단위
+
+*composer require doctrine/dbal
+-->column추가 변경?
+
+*데이터 전달
+  $post = new Post();
+
+
+*새로고침은
+이전의 요청을 다시하는 것. return view를 하면 이전 요청이 posts/store가 돼서 계속
+새로운게 들어감. 그래서 redirect를 하는 것.
+
+*로그아웃(로그인 안한 상태)에서의 권한부여는?
+
+*{{  }} --> html중간에 <?php ?> 하면 동적인 데이터 보여줄 수 있는 것처럼 html중간에 라라벨 문법인 {{  }}를 사용
+
+*요청하는 건 미들웨어 한꺼번에 되게끔
