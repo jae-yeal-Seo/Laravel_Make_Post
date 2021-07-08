@@ -35,7 +35,10 @@ Route::post('/posts/store', [PostsController::class, 'postStore'])->name('posts.
 Route::get('/posts/index', [PostsController::class, 'index'])->name('posts.index');
 //name~ : 라우터이름 --> navigation.blade.php 블레이드에서 설정
 Route::get('/posts/show/{id}', [PostsController::class, 'show'])->name('post.show');
+Route::get('/posts/mypost/', [PostsController::class, 'myposts'])->name('posts.myposts');
+
 Route::get('/posts/{post}', [PostsController::class, 'edit'])->name('post.edit');
 Route::put('/posts/{id}', [PostsController::class, 'update'])->name('post.update');
 Route::delete('/posts/{id}', [PostsController::class, 'destroy'])->name('post.delete');
+
 //매개변수이름 = 파라미터 이름이여야 함.

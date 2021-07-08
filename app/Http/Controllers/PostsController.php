@@ -185,4 +185,12 @@ class PostsController extends Controller
         //파일 시스템에서 이미지 파일 삭제(서버의 storage안에 사진 파일들)
         //게시글을 데이터베이스에서 삭제
     }
+    public function myposts()
+    {
+        // $posts = auth() -> user()->posts()->paginate(2);
+        $CURR = Auth::user()->id;
+        $Myposts = Post::where('user_id', $CURR)->latest()->paginate(2);
+        //latest는 정렬
+        return view('test.myposts', ['posts' => $Myposts, 'page' => $Myposts, 'Myposts' => $Myposts]);
+    }
 }

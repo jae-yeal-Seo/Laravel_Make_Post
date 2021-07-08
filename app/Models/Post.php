@@ -18,4 +18,11 @@ class Post extends Model
         $imageFile = $this->image ?? 'no_image_available.png';
         return $path . $imageFile;
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    //연결될 모델을 소문자로 씀. 관례 : 모델은 단수, 테이블은 복수
+    //내부적으로 조인 해줌
 }

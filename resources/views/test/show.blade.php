@@ -22,8 +22,8 @@
 
         <div class="form-group">
                 <label for="content">Content</label>
-                <textarea class="form-control" 
-                id="content" name = "content" readonly>{{ $post->content }}</textarea>
+                <div name = "content"
+                id="content"  readonly>{!! $post->content !!}</div>
         </div>
 
         <div class="form-group">
@@ -53,8 +53,11 @@
                 <label>작성자</label>
                 <input type="text" readonly 
                 class="form-control" 
-                value="{{ $post->user_id }}">
+                value="{{ $post->user->name }}">
              </div>
+             {{-- $post->user가 조인. --}}
+             {{-- user()이면 모든 애들다나옴 }}
+             {{-- user면 column설정가능 }}
 
              @auth
              {{-- @if(auth()->user()->id == $post->user_id) --}}
@@ -75,6 +78,6 @@
              </div>
              @endcan
              {{-- @endif --}}
-             @endauth
+             {{-- @endauth --}}
 </body>
 </html>
