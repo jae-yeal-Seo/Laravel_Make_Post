@@ -34,6 +34,12 @@
             {{ $post->content }}
           </div>
           <span>written on {{ $post->created_at }}</span> --}}
+          <span>written on {{ $post->created_at->diffForHumans() }}</span>
+          {{ $post->count }} {{ $post->count >0 ? Str::plural('view',$post->count) : 'view' }}
+          {{-- 1개면 view라고 하고 복수형이면 views(복수형)으로 만들어라 0개일 때도 view가 됨.--}}
+          {{-- 한 show 누르고 뒤로가기 누르면 안 올라갔다가 목록보기 할 때 한꺼번에 올라감 --}}
+          {{-- 뒤로가기로 하는 건 그 이전의 목록을 보여주는 거임. 목록을 목록보기로 다시 
+            요청하는 게 아니라 --}}
           <hr>
         </li>
         @endforeach

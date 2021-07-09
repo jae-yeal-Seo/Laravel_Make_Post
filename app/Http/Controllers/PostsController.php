@@ -23,6 +23,10 @@ class PostsController extends Controller
         // dd($request->page);
         $page = $request->page;
         $post = Post::find($id);
+        $post->count++;
+        //이렇게 count값을 올리면 된다.(조회수 증가시킴)
+        $post->save();
+        // DB에 반영
 
         return view('test.show', compact('post', 'page'));
     }
