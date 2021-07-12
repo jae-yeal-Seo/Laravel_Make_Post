@@ -37,10 +37,13 @@
           <span>written on {{ $post->created_at->diffForHumans() }}</span>
           {{ $post->viewers->count() }}
            {{ $post->viewers->count() > 0 ? Str::plural('view',$post->viewers->count()) : 'view' }}
+          
           {{-- 왜 count에 ()붙지? column도 ()가 붙나? --}}
           {{-- !!이상한 점에 주목해야 한다. 거기에 답이 있다!! --}}
           {{-- count는 column이 아니라 갯수를 세는 "메소드"이다.  --}}
-          {{-- $post->viewers에 접근하는 것은 피벗테이블에서 상대 테이블의 기본키를 참조하는 외래키에 접근하는 것이다. --}}
+          {{-- $post->viewers에 접근하는 것은 피벗테이블, 상대테이블 모두 접근할 수 있다. --}}
+          {{-- -->이게 맞다. --}}
+          {{-- php artisan inker --> $post = Post::find(4) $post->viewers로 해보면 알 수 있다. --}}
 
           {{-- 1개면 view라고 하고 복수형이면 views(복수형)으로 만들어라. 0개일 때도 view가 됨.--}}
           {{-- 한 show 누르고 뒤로가기 누르면 안 올라갔다가 목록보기 할 때 한꺼번에 올라감 --}}
