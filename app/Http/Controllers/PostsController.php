@@ -23,10 +23,28 @@ class PostsController extends Controller
         // dd($request->page);
         $page = $request->page;
         $post = Post::find($id);
-        $post->count++;
-        //이렇게 count값을 올리면 된다.(조회수 증가시킴)
-        $post->save();
+        // $post->count++;
+        //이렇게 count값을 올리면 된다.(조회수 증가시킴)-->근데 이건 한 유저가 계속누르면 계속올라가서 
+        // 별로 필요 없는 코드임.
+        // $post->save();
         // DB에 반영
+
+        /*
+        이 글을 조회한 사용자들 중에, 현재 
+        로그인한 사용자가 포함되어 있는지를 체크하고 
+        포함되어 있지 않으면 추가.
+        포함되어 있으면 다음 단계로 넘어감.
+        */
+        if (Auth::user() != null && !$post->viewers->contains(Auth::user())) {
+            $post->viewers()->attach(Auth::user()->id);
+            //해당 id에 해당하는 투플을 피벗테이블에 넣어줌
+        }
+        //"로그인 돼 있는 상태 + 아직 안들어간 게시글 일 때" 조회수 +1함.
+        //앞에 조건이 있어야 없으면 로그인을 안 한 상태일 때 두번째 조건을 충족시켜 조회수 +1을 시킴. ( 로그인하지 않은 사용자는 조회수 참가 안 하기로 함. )
+
+
+
+        //넣어야 될 경우
 
         return view('test.show', compact('post', 'page'));
     }

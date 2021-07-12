@@ -25,4 +25,10 @@ class Post extends Model
     }
     //연결될 모델을 소문자로 씀. 관례 : 모델은 단수, 테이블은 복수
     //내부적으로 조인 해줌
+
+    public function viewers()
+    {
+        // return $this->belongsTo(User::class, 'post_user', 'post_id', 'user_id','id','id','users');
+        return $this->belongsToMany(User::class);
+    }
 }

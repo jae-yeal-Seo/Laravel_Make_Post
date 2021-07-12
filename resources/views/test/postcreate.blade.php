@@ -48,6 +48,7 @@
 
     <script>
         ClassicEditor
+        //ClassicEditor-->Quick start를 참조하면 의미를 알 수 있다.
                 .create( document.querySelector( '#content' ) )
                 .then( editor => {
                         console.log( editor );

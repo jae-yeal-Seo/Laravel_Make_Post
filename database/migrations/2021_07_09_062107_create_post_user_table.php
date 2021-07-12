@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
@@ -21,7 +22,7 @@ class CreatePostUserTable extends Migration
             //     ->constarined()->onDelete('cascade');
             $table->unsignedBigInteger('post_id');
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->default(new Expression('now()'));
             $table->unique(['user_id', 'post_id']);
         });
     }

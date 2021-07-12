@@ -21,6 +21,7 @@
       
       <ul class="list-group mt-3">
         @foreach($Myposts as $post)
+        {{-- PostController의 myposts라는 메소드에서 'Myposts'보낸다. Myposts는 해당아이디의 게시글들이다.--}}
         <li class="list-group-item">
           <span>
           <a href="{{ route('post.show',['id'=>$post->id, 'page'=>$posts->currentPage()]) }}">
