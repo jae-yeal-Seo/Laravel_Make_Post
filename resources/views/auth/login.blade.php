@@ -52,5 +52,24 @@
                 </x-button>
             </div>
         </form>
+
+        <div class="flex items-center justify-end mx-17 mt-3">
+
+        <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mr-10">
+         <a href="{{ route('github.login') }}">Github <br> login</a>
+          </button>
+
+          <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mr-10">
+            <a href="">Google <br> login</a>
+             </button>
+
+             <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mr-8">
+                <a href="">KaKao <br> login</a>
+                 </button>
+                </div>
+        </div>
+        {{-- tailwinds button을 검색해서 버튼을 이쁘게 만들었다. --}}
+
     </x-auth-card>
+    
 </x-guest-layout>

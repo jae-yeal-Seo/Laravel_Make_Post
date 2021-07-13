@@ -15,3 +15,5 @@
         </div>
     </div>
 </x-app-layout>
+{{-- x-app-layout은 layouts의 app.blade.php임 --}}
+{{-- 만약 guest.blade.php였으면 <x-guest-layout>일 것이다. 레이아웃을 상속하는 개념이다 --}}

@@ -24,12 +24,14 @@
             <header class="bg-white shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     {{ $header }}
+                   {{-- <x-slot name="header">인 애를 여기에 집어넣고 --}}
                 </div>
             </header>
 
             <!-- Page Content -->
             <main>
                 {{ $slot }}
+                {{-- <x-app-layout>에서 name="header"말고 나머지는 모두 여기에 저장된다. --}}
             </main>
         </div>
     </body>
