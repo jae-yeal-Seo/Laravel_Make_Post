@@ -133,8 +133,8 @@ class PostsController extends Controller
         // return $posts;
         // dd($posts[0]->created_at);
         //dd만나면 그밑으로 안 감.
-        $posts = Post::latest()->paginate(2);
-        //한페이지에 2개씩만 줘
+        $posts = Post::latest()->paginate(10);
+        //한페이지에 10개씩만 줘
         return view('test.index', ['posts' => $posts, 'page' => $posts]);
     }
 

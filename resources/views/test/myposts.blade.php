@@ -35,6 +35,9 @@
             {{ $post->content }}
           </div>
           <span>written on {{ $post->created_at }}</span> --}}
+          <span>written on {{ $post->created_at->diffForHumans() }}</span>
+          {{ $post->viewers->count() }}
+           {{ $post->viewers->count() > 0 ? Str::plural('view',$post->viewers->count()) : 'view' }}
           <hr>
         </li>
         @endforeach

@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.4.1/dist/chart.min.js"></script>
 </head>
 <body>
-    <canvas id="myChart" width="400" height="400"></canvas>
+    <canvas id="myChart" width="600" height="500"></canvas>
     <script>
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
@@ -16,7 +16,7 @@
         data: {
             labels: [
                 @foreach($postusers as $postuser)
-                '{{ $postuser->post->title }}',
+                {{ $postuser->title }},
                 
                 @endforeach
             ],
@@ -47,6 +47,7 @@
             }]
         },
         options: {
+            responsive: false,
             scales: {
                 y: {
                     beginAtZero: true
@@ -55,5 +56,19 @@
         }
     });
     </script>
+    <div class = "list-group" style="background-color:ivory">
+        @foreach($postusers as $postuser)
+        <a href="{{ route('post.show',['id'=>$postuser->post_id]) }}" class="list-group-item list-group-item-action flex-column align-items-start active">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1"> 제목 : {{ $postuser->title }}</h5>
+            <small><span> {{ \Carbon\Carbon::parse($postuser->created_at)->diffForHumans() }}에 작성됨</span></small>
+            <br>
+            <small>{{ $postuser->cnt }}
+              {{ $postuser->cnt > 0 ? Str::plural('view',$postuser->cnt) : 'view' }}
+             <hr></small>
+          </div>
+        </a>
+        @endforeach
+    </div>
 </body>
 </html>
