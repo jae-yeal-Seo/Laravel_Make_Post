@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.4.1/dist/chart.min.js"></script>
 </head>
 <body>
-    <canvas id="myChart" width="600" height="500"></canvas>
+    <canvas id="myChart" width="600" height="700"></canvas>
     <script>
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
@@ -16,12 +16,11 @@
         data: {
             labels: [
                 @foreach($postusers as $postuser)
-                {{ $postuser->title }},
-                
+                "{{ $postuser->title }}",
                 @endforeach
             ],
             datasets: [{
-                label: '# of Views',
+                label: "# of Views",
                 data: [
                     @foreach($postusers as $postuser)
                     {{ $postuser->cnt }},
@@ -56,7 +55,7 @@
         }
     });
     </script>
-    <div class = "list-group" style="background-color:ivory">
+    <div class = "list-group" style="background-color:ivory; ">
         @foreach($postusers as $postuser)
         <a href="{{ route('post.show',['id'=>$postuser->post_id]) }}" class="list-group-item list-group-item-action flex-column align-items-start active">
           <div class="d-flex w-100 justify-content-between">
