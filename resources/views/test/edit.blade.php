@@ -25,6 +25,7 @@
                 @error('title')
                 <div>{{ $message }}</div>
                 @enderror
+                {{-- title에 대한 오류가 나면 $message를 띄운다. --}}
             </div>
 
 
