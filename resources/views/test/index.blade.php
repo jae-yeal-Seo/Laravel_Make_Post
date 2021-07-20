@@ -7,7 +7,7 @@
     </h2>
 </x-slot>
       
-      
+
 <div class = "list-group" style="background-color:ivory">
   @foreach($posts as $post)
   <a href="{{ route('post.show',['id'=>$post->id, 'page'=>$posts->currentPage()]) }}" class="list-group-item list-group-item-action flex-column align-items-start active">
@@ -58,7 +58,7 @@
     </div>
   </x-app-layout>
   {{-- 왜 count에 ()붙지? column도 ()가 붙나? --}}
-          {{-- !!이상한 점에 주목해야 한다. 거기에 답이 있다!! --}}
+          {{-- !!이상한 점에 주목해야 한다. 거기에 답이 있다 !!--}}
           {{-- count는 column이 아니라 갯수를 세는 "메소드"이다.  --}}
           {{-- $post->viewers에 접근하는 것은 피벗테이블, 상대테이블 모두 접근할 수 있다. --}}
           {{-- -->이게 맞다. --}}

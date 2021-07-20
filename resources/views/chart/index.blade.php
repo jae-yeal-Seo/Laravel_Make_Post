@@ -2,8 +2,8 @@
     <x-slot name="header">
         <script src="https://cdn.jsdelivr.net/npm/chart.js@3.4.1/dist/chart.min.js"></script>
     </x-slot>
-<div class="py-13">
-    <canvas id="myChart" width="600" height="700"></canvas>
+<div class="py-14 mr-1">
+    <canvas id="myChart" width="600" height="700" ></canvas>
     <script>
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
@@ -50,18 +50,18 @@
         }
     });
     </script>
-    <div class = "list-group" style="background-color:ivory; ">
+    <div class = "flex space-x-4 absolute bottom-50 left-100" style="background-color:ivory; ">
         @foreach($postusers as $postuser)
-        <a href="{{ route('post.show',['id'=>$postuser->post_id]) }}" class="list-group-item list-group-item-action flex-column align-items-start active">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1"> 제목 : {{ $postuser->title }}</h5>
+        <div class="flex">
+        <a style="background-color:yellowgreen" href="{{ route('post.show',['id'=>$postuser->post_id]) }}" >
+            <h5> 제목 : {{ $postuser->title }}</h5>
             <small><span> {{ \Carbon\Carbon::parse($postuser->created_at)->diffForHumans() }}에 작성됨</span></small>
             <br>
             <small>{{ $postuser->cnt }}
               {{ $postuser->cnt > 0 ? Str::plural('view',$postuser->cnt) : 'view' }}
              <hr></small>
-          </div>
         </a>
+    </div>
         @endforeach
     </div>
 </div>
