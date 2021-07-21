@@ -29,7 +29,7 @@ Route::get('/dashboard', function () {
 require __DIR__ . '/auth.php';
 
 
-Route::get('/posts/create', [PostsController::class, 'postCreate']);
+Route::get('/posts/create', [PostsController::class, 'postCreate'])->name('posts.create');
 // ->middleware(['auth']);
 Route::post('/posts/store', [PostsController::class, 'postStore'])->name('posts.store');
 // ->middleware(['auth']);

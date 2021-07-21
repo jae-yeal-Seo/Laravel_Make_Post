@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<x-app-layout>
+<x-slot name="header">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=<, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -10,53 +9,57 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/29.0.0/classic/ckeditor.js"></script>
-</head>
-<body>
-    <div class="container">
-        <form action="/posts/store" method="post" enctype="multipart/form-data"> 
-            {{-- enctype="multipart/form-data 이게 있어야 사진을 서버로 보낼 수 있음 --}}
-            @csrf
-            <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" name = "title" class="form-control" id="title" autocomplete="off" value="{{ old('title') }}">
-                @error('title')
-          <div>{{ $message }}</div>
-          @enderror
+</x-slot>
+
+<div class="py-12">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="container">
+                <form action="/posts/store" method="post" enctype="multipart/form-data"> 
+                    {{-- enctype="multipart/form-data 이게 있어야 사진을 서버로 보낼 수 있음 --}}
+                    @csrf
+                    <div class="form-group mt-5">
+                        <label for="title">Title</label>
+                        <input type="text" name = "title" class="form-control" id="title" autocomplete="off" value="{{ old('title') }}">
+                        @error('title')
+                  <div>{{ $message }}</div>
+                  @enderror
+                    </div>
+        
+        
+                    <div class="form-group">
+                        <label for="content">Content</label>
+                        <textarea class="form-control" 
+                            id="content" name = "content" >{{ old('content') }}</textarea>
+                  @error('content')
+                  <div>{{ $message }}</div>
+                  @enderror
+                    </div>
+        
+        
+                    <div class="form-group">
+                        <label for="file">File</label>
+                      <input type="file" id="file" name = "imageFile">
+                  @error('imageFile')
+                  <div>{{ $message }}</div>
+                  @enderror
+                    </div>
+                    <button type="submit" class = "btn btn-primary mb-10">Submit</button>
+                </form>
             </div>
-
-
-            <div class="form-group">
-                <label for="content">Content</label>
-                <textarea class="form-control" 
-                    id="content" name = "content" >{{ old('content') }}</textarea>
-          @error('content')
-          <div>{{ $message }}</div>
-          @enderror
-            </div>
-
-
-            <div class="form-group">
-                <label for="file">File</label>
-              <input type="file" id="file" name = "imageFile">
-          @error('imageFile')
-          <div>{{ $message }}</div>
-          @enderror
-            </div>
-            <button type="submit" class = "btn btn-primary">Submit</button>
-        </form>
+        
+            <script>
+                ClassicEditor
+                //ClassicEditor-->Quick start를 참조하면 의미를 알 수 있다.
+                        .create( document.querySelector( '#content' ) )
+                        .then( editor => {
+                                console.log( editor );
+                        } )
+                        .catch( error => {
+                                console.error( error );
+                        } );
+        </script>
+        </div>
     </div>
-
-    <script>
-        ClassicEditor
-        //ClassicEditor-->Quick start를 참조하면 의미를 알 수 있다.
-                .create( document.querySelector( '#content' ) )
-                .then( editor => {
-                        console.log( editor );
-                } )
-                .catch( error => {
-                        console.error( error );
-                } );
-</script>
-
-</body>
-</html>
+</div>
+</x-app-layout>

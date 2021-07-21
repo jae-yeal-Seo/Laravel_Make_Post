@@ -8,7 +8,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     </x-slot>
     <div class = "py-13">
-    <div class="container m-5">
+    <div class="container mx-4 mt-5">
          <div class="form-group">
              <label for="title">Title</label>
              <input type="text" readonly name = "title" class="form-control" id="title" autocomplete="off" value="{{ $post->title }}">
@@ -74,6 +74,46 @@
               @endcan
               {{-- @endif --}}
               {{-- @endauth --}}
+              {{-- 여기부터 댓글 --}}
+              <div class="bg-gray p-0">
+                <div class="max-w-7xl -mx-0 mt-10"> 
+                  <div class="bg-white h-auto p-5 modal__content rounded">
+                    <div class="modal__header mb-4">
+                      <div class="p-2 rounded-full bg-purple-lightest inline-block">
+                        <i class="fas fa-comments text-2xl text-purple-dark"></i>
+                      </div>
+                    </div>
+                    <div class="modal__body">
+                      <p class="text-grey-darkest font-medium mb-1 text-base"> Leave a Comment</p>
+                      <div class="mt-4 border border-grey w-10/12 border-1 rounded p-2 relative focus:border-red">
+                        <input type="text" class="pl-8 text-grey-dark 
+                        font-light w-4/5 text-sm font-medium tracking-wide" placeholder="Type your commnet...">
+                        <button class="ml-2 bg-purple-500 text-white border-2 border-purple p-3 rounded text-sm font-semibold hover:bg-purple-dark hover:border-purple-dark">Submit Comment</button>
+                      </div>
+                      <div class="mt-6 border"></div>
+                      <div class="flex relative mt-6">
+                        <i class="fas fa-globe text-grey-dark"></i>
+                        <div class=" ml-2 "> 
+                        </div>
+                        <i class="fas fa-toggle-on fa-2x ml-auto text-blue"></i>
+                      </div>
+                      <div class="flex relative mt-6">
+                        <i class="fab fa-slack text-grey-dark"></i>
+                        <div class=" ml-2 "> 
+                        </div>
+                        <i class="fas fa-toggle-on fa-2x ml-auto text-blue"></i>
+                      </div>
+                    </div>
+                    <div class="modal__footer mt-6">
+                    <div class="text-right">
+                        {{-- <button class="bg-white border-2 p-3 rounded text-sm font-semibold hover:bg-grey-light">Cancel</button> --}}
+                    </div>
+                    </div>
+                  </div>
+                    
+                </div>
+                </div>
+                 {{-- 여기까지 댓글 --}}
         </div>
     </div>
 </x-app-layout>
