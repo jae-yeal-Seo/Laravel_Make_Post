@@ -12,13 +12,12 @@ class CommentController extends Controller
     public function postCommentStore(Request $request, $id)
     {
 
-        dd($request);
-        $content = $request->comment;
+        $content = $request->content;
 
         $comment = new Comment();
         $comment->content = $content;
         $comment->user_id = Auth::user()->id;
-        $comment->post_id = $request->$id;
+        $comment->post_id = $id;
 
 
         $request->validate([
