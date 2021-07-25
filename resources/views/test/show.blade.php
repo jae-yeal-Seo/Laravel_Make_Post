@@ -129,6 +129,16 @@
                 </div>
                  {{-- 여기까지 댓글 --}}
                 </form>
+                <div class = "list-group" style="background-color:ivory">
+                  @foreach($comments as $comment)
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1"> 작성자 : {{ $comment->user()->name }}</h5>
+                      <small><span> {{ $comment->created_at->diffForHumans() }}에 작성됨</span></small>
+                      <br>
+                    </div>
+                  </a>
+                  @endforeach
+                </div>
         </div>
     </div>
 </x-app-layout>

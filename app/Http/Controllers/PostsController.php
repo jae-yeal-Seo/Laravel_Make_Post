@@ -40,12 +40,12 @@ class PostsController extends Controller
         }
         //"로그인 돼 있는 상태 + 아직 안들어간 게시글 일 때" 조회수 +1함.
         //앞에 조건이 있어야 없으면 로그인을 안 한 상태일 때 두번째 조건을 충족시켜 조회수 +1을 시킴. ( 로그인하지 않은 사용자는 조회수 참가 안 하기로 함. )
-
+        $comments = Post::find($id);
 
 
         //넣어야 될 경우
 
-        return view('test.show', compact('post', 'page'));
+        return view('test.show', compact('post', 'page', 'comments'));
     }
     //몇번째 게시물인지, 몇번째 목록이였는지도 함께 받음
 
