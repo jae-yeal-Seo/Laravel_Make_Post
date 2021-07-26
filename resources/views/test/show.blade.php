@@ -9,6 +9,7 @@
     </x-slot>
     <div class = "py-13">
   <div class="container mx-4 mt-5">
+    <div> <a href="{{ route('posts.index', ['page'=>$page]) }}">목록보기</a> </div><br>
          <div class="form-group">
              <label for="title">Title</label>
              <input type="text" readonly name = "title" class="form-control" id="title" autocomplete="off" value="{{ $post->title }}">
@@ -130,14 +131,15 @@
                  {{-- 여기까지 댓글 --}}
                 </form>
                 <div class = "list-group" style="background-color:ivory">
-                  <p>{{ $comments }}</p>
-                  {{-- @foreach($comments as $comment)
+                  {{-- {{ $comments }} --}}
+                  @foreach($comments as $comment)
                     <div class="d-flex w-100 justify-content-between">
-                      <h5 class="mb-1"> 작성자 : {{ $comments->user_id }}</h5>
-                      <small><span> {{ $comments->created_at->diffForHumans() }}에 작성됨</span></small>
+                      <h5 class="mb-1"> 작성자 : {{ $comment-> }}</h5>
+                      <h5 class="mb-1">{{ $comment->content }}</h5>
+                      <small><span> {{ $comment->created_at->diffForHumans() }}에 작성됨</span></small>
                       <br>
                     </div>
-                  @endforeach --}}
+                  @endforeach
                 </div>
         </div>
     </div>
