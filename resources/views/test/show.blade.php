@@ -134,7 +134,7 @@
                   {{-- {{ $comments }} --}}
                   @foreach($comments as $comment)
                     <div class="d-flex w-100 justify-content-between">
-                      <h5 class="mb-1"> 작성자 : {{ $comment-> }}</h5>
+                      <h5 class="mb-1"> 작성자 : {{ $comment->user->name }}</h5>
                       <h5 class="mb-1">{{ $comment->content }}</h5>
                       <small><span> {{ $comment->created_at->diffForHumans() }}에 작성됨</span></small>
                       <br>
