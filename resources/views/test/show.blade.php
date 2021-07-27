@@ -130,15 +130,22 @@
                 </div>
                  {{-- 여기까지 댓글 --}}
                 </form>
-                <div class = "list-group" style="background-color:ivory">
-                  {{-- {{ $comments }} --}}
                   @foreach($comments as $comment)
-                    <div class="d-flex w-100 justify-content-between">
-                      <h5 class="mb-1"> 작성자 : {{ $comment->user->name }}</h5>
-                      <h5 class="mb-1">{{ $comment->content }}</h5>
-                      <small><span> {{ $comment->created_at->diffForHumans() }}에 작성됨</span></small>
-                      <br>
-                    </div>
+                  <div>
+                    <section class="rounded-b-lg  mt-4 h-18">
+                      <div id="task-comments" class="pt-4">
+                  <div class="bg-white rounded-lg p-3  flex flex-col justify-center items-center shadow-lg mb-4">
+                  <div class="flex flex-row justify-center mr-2">
+                    <h3 class="text-purple-600 w-80 mr-16 font-semibold text-lg md:text-left ">작성자 : {{ $comment->user->name }}</h3>
+                    <textarea style="width: 70%" class="text-gray-600 text-lg text-center md:text-left ">{{ $comment->content }}</textarea>
+                    <p style="width: 30%" class="text-gray-600 text-lg text-center ml-20 md:text-left ">{{ $comment->created_at->diffForHumans() }}에 작성됨</p>
+                    <button class="w-full sm:w-auto px-7 py-3 mb-4  text-base font-semibold focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-900 focus:outline-none transition-colors duration-200 rounded-sm block h-4 border-b border-yellow-300 bg-yellow-200 hover:bg-yellow-300 text-yellow-900">수정</button>
+                    <button class="w-full sm:w-auto px-7 py-3   mb-4  text-base font-semibold focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-900 focus:outline-none transition-colors duration-200 rounded-sm block ml-4 h-4 border-b border-yellow-300 bg-yellow-200 hover:bg-yellow-300 text-yellow-900">삭제</button>
+                  </div>
+                  </div>
+                  </div>
+                </section>
+                      </div>
                   @endforeach
                 </div>
         </div>
