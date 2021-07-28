@@ -132,15 +132,30 @@
                 </form>
                   @foreach($comments as $comment)
                   <div>
-                    <section class="rounded-b-lg  mt-4 h-18">
+                    <section class="rounded-b-lg  mt-4 h-15">
                       <div id="task-comments" class="pt-4">
-                  <div class="bg-white rounded-lg p-3  flex flex-col justify-center items-center shadow-lg mb-4">
+                  <div class="bg-white rounded-lg p-3 pr-1 flex flex-col justify-center items-center shadow-lg mb-4">
                   <div class="flex flex-row justify-center mr-2">
-                    <h3 class="text-purple-600 w-80 mr-16 font-semibold text-lg md:text-left ">작성자 : {{ $comment->user->name }}</h3>
-                    <textarea style="width: 70%" class="text-gray-600 text-lg text-center md:text-left ">{{ $comment->content }}</textarea>
-                    <p style="width: 30%" class="text-gray-600 text-lg text-center ml-20 md:text-left ">{{ $comment->created_at->diffForHumans() }}에 작성됨</p>
-                    <button class="w-full sm:w-auto px-7 py-3 mb-4  text-base font-semibold focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-900 focus:outline-none transition-colors duration-200 rounded-sm block h-4 border-b border-yellow-300 bg-yellow-200 hover:bg-yellow-300 text-yellow-900">수정</button>
-                    <button class="w-full sm:w-auto px-7 py-3   mb-4  text-base font-semibold focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-900 focus:outline-none transition-colors duration-200 rounded-sm block ml-4 h-4 border-b border-yellow-300 bg-yellow-200 hover:bg-yellow-300 text-yellow-900">삭제</button>
+                    <h3 style="line-height:95px" class="text-purple-600 w-80 mr-8 font-semibold text-lg md:text-left ">작성자 : {{ $comment->user->name }}</h3>
+                    
+                    <div class="inline-block ml-6">
+                      {{-- <form action ="{{ route('post.comment.edit',['id'=>$post->id,'page'=>$page, 'commentid'=>$comment->id]) }}" method="post">
+                        @csrf --}}
+                        <textarea name="editedcomment" style="width:70%" class="text-gray-600 text-lg text-center md:text-left resize-none" >{{ $comment->content }}</textarea>
+                      <button class="bg-purple-400 .p-16 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l rounded-r mb-3">
+                        수정
+                      </button>
+                      {{-- </form> --}}
+
+                      {{-- <form action ="{{ route('post.comment.edit',['id'=>$post->id,'page'=>$page, 'commentid'=>$comment->id]) }}" method="post">
+                      @csrf --}}
+                      <button class="bg-purple-400 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l rounded-r">
+                        삭제
+                      </button>
+                      {{-- </form> --}}
+
+                    </div>
+                    <p style="width:20%" class="text-gray-600 text-xs text-center leading-10 md:text-left ">{{ $comment->created_at->diffForHumans() }}에 작성됨</p>
                   </div>
                   </div>
                   </div>
