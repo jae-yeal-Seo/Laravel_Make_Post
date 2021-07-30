@@ -41,7 +41,7 @@ Route::get('/posts/show/{id}', [PostsController::class, 'show'])->name('post.sho
 Route::get('/posts/mypost/', [PostsController::class, 'myposts'])->name('posts.myposts');
 
 Route::get('/posts/{post}', [PostsController::class, 'edit'])->name('post.edit');
-Route::get('/posts/{post}/{commentid}', [CommentController::class, 'edit'])->name('post.comment.edit');
+Route::post('/posts/{post}/{commentid}', [CommentController::class, 'edit'])->name('post.comment.edit');
 
 Route::put('/posts/{id}', [PostsController::class, 'update'])->name('post.update');
 Route::delete('/posts/{id}', [PostsController::class, 'destroy'])->name('post.delete');

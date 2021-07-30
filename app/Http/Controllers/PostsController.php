@@ -20,6 +20,7 @@ class PostsController extends Controller
 
     public function show(Request $request, $id)
     {
+
         $page = $request->page;
         $post = Post::find($id);
         // $post->count++;

@@ -139,21 +139,27 @@
                     <h3 style="line-height:95px" class="text-purple-600 w-80 mr-8 font-semibold text-lg md:text-left ">작성자 : {{ $comment->user->name }}</h3>
                     
                     <div class="inline-block ml-6">
-                      {{-- <form action ="{{ route('post.comment.edit',['id'=>$post->id,'page'=>$page, 'commentid'=>$comment->id]) }}" method="post">
-                        @csrf --}}
+                      <form action ="{{ route('post.comment.edit',['post'=>$post->id,'page'=>$page, 'commentid'=>$comment->id]) }}" method="post">
+                        @csrf
                         <textarea name="editedcomment" style="width:70%" class="text-gray-600 text-lg text-center md:text-left resize-none" >{{ $comment->content }}</textarea>
+
+                      @auth
+                      @if(auth()->user()->id == $comment->user_id)
                       <button class="bg-purple-400 .p-16 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l rounded-r mb-3">
                         수정
                       </button>
-                      {{-- </form> --}}
-
+                      
+                      </form>
+                    
                       {{-- <form action ="{{ route('post.comment.edit',['id'=>$post->id,'page'=>$page, 'commentid'=>$comment->id]) }}" method="post">
                       @csrf --}}
                       <button class="bg-purple-400 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l rounded-r">
                         삭제
                       </button>
+                      @endif
+                      @endauth
                       {{-- </form> --}}
-
+                      
                     </div>
                     <p style="width:20%" class="text-gray-600 text-xs text-center leading-10 md:text-left ">{{ $comment->created_at->diffForHumans() }}에 작성됨</p>
                   </div>
