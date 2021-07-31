@@ -29,17 +29,16 @@ class CommentController extends Controller
     public function edit(Request $request, $post, $commentid)
     {
         // $id를 이용해서 객체를 만들고
+        // $request에 있는 editedcomment를 이용해서 내용을 수정한다.
+
         $comment = Comment::find($commentid);
         $comment->content = $request->editedcomment;
         $comment->user_id = Auth::user()->id;
         $comment->post_id = $post;
 
-
-
-        // $request에 있는 editedcomment를 이용해서 내용을 수정한다.
-        $request->validate([
-            'content' => 'required'
-        ]);
+        // $request->validate([
+        //     'content' => 'required'
+        // ]);
 
         $comment->save();
         return redirect()->route('post.show', ['page' => $request->page, 'id' => $post]);
