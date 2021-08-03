@@ -43,4 +43,11 @@ class CommentController extends Controller
         $comment->save();
         return redirect()->route('post.show', ['page' => $request->page, 'id' => $post]);
     }
+    public function delete(Request $request, $post, $commentid)
+    {
+        $comment = Comment::find($commentid);
+        $comment->delete();
+
+        return redirect()->route('post.show', ['page' => $request->page, 'id' => $post]);
+    }
 }

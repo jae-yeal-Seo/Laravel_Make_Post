@@ -151,14 +151,14 @@
                       
                       </form>
                     
-                      {{-- <form action ="{{ route('post.comment.edit',['id'=>$post->id,'page'=>$page, 'commentid'=>$comment->id]) }}" method="post">
-                      @csrf --}}
+                      <form action ="{{ route('post.comment.delete',['post'=>$post->id,'page'=>$page, 'commentid'=>$comment->id]) }}" method="post">
+                      @csrf
                       <button class="bg-purple-400 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l rounded-r">
                         삭제
                       </button>
                       @endif
                       @endauth
-                      {{-- </form> --}}
+                      </form>
                       
                     </div>
                     <p style="width:20%" class="text-gray-600 text-xs text-center leading-10 md:text-left ">{{ $comment->created_at->diffForHumans() }}에 작성됨</p>
