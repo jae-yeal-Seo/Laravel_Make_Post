@@ -11,22 +11,24 @@
 <div class = "list-group" style="background-color:ivory">
   @foreach($posts as $post)
   <a href="{{ route('post.show',['id'=>$post->id, 'page'=>$posts->currentPage()]) }}" class="list-group-item list-group-item-action flex-column align-items-start active">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1"> 제목 : {{ $post->title }}</h5>
+    <div class="min-w-screen p-2 min-h-full bg-gray-100 flex items-center justify-center bg-gray-100 font-sans ">
+      <div class="container">
+        <div class="card bg-white py-3 px-5 rounded-xl flex flex-col">
+          <div class="title text-xl font-medium mb-3"> <h5 class="mb-1"> 제목 : {{ $post->title }}</h5></div>
+          <div class="w-full">
       <small><span> {{ $post->created_at->diffForHumans() }}에 작성됨</span></small>
       <br>
       <small>{{ $post->viewers->count() }}
         {{ $post->viewers->count() > 0 ? Str::plural('view',$post->viewers->count()) : 'view' }}
        <hr></small>
+        </div>
+        </div>
+      </div>
+      </div>
     </div>
   </a>
   @endforeach
 </div>
-
-
-
-
-
 {{-- <ul class="list-group mt-3">
         @foreach($posts as $post)
         <li class="list-group-item">
