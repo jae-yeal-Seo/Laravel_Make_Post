@@ -9,8 +9,8 @@
   </div>
 
 <div>
-<form class="m-4 flex">
-          <input size=80 style="position:relative; bottom:16px" class="rounded-l-lg p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white" placeholder="찾을 게시글을 입력하세요"/>
+<form class="m-4 flex" action ="{{ route('post.title.find') }}" method="get">
+          <input size=80 name="findtitle" style="position:relative; bottom:16px" class="rounded-l-lg p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white" placeholder="찾을 게시글을 입력하세요"/>
         <button style="position:relative; bottom:16px"  class="px-8 rounded-r-lg bg-yellow-400  text-gray-800 font-bold p-4 uppercase border-yellow-500 border-t border-b border-r">찾기</button>
       </form>
     </div>
@@ -20,7 +20,7 @@
           <a style="position:relative; top:14px"  href="/posts/create" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">게시글 작성</a>
           {{-- 로그인 중에만 쓸 수 있는 기능이여야 함. 그래서 auth, endauth추가 --}}  
          @endauth
-        </div>
+      </div>
 
   </div>
   </x-slot>

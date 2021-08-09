@@ -51,5 +51,7 @@ Route::get('/chart/index', [ChartController::class, 'index'])->name('chart.index
 
 Route::post('/posts/comment/store/{id}', [CommentController::class, 'postCommentStore'])->name('posts.comment.store');
 
+Route::get('/posts/findtitle/dfas', [PostsController::class, 'findTitle'])->name('post.title.find');
+
 
 //매개변수이름 = 파라미터 이름이여야 함.

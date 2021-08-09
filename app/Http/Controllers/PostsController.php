@@ -215,4 +215,12 @@ class PostsController extends Controller
         //latest는 정렬
         return view('test.myposts', ['posts' => $Myposts, 'page' => $Myposts, 'Myposts' => $Myposts]);
     }
+
+    public function findTitle(Request $request)
+    {
+
+        $findtitle = $request->findtitle;
+        $posts = Post::where('title', 'LIKE', '%' . $findtitle . '%')->latest()->paginate(10)->get();
+        return view('test.findtitle', ['posts' => $posts]);
+    }
 }
